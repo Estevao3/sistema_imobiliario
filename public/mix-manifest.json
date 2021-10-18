@@ -2,6 +2,10 @@
     "/backend/assets/css/reset.css": "/backend/assets/css/reset.css?id=3537f958f4cc0649ea1b",
     "/backend/assets/css/boot.css": "/backend/assets/css/boot.css?id=6d77a7a22d2d3d726bb8",
     "/backend/assets/css/login.css": "/backend/assets/css/login.css?id=66041157945d3ad4daef",
+    "/backend/assets/css/style.css": "/backend/assets/css/style.css?id=1c858866704b27a7bc04",
+    "/backend/assets/css/libs.css": "/backend/assets/css/libs.css?id=01871760f96cca423cd6",
     "/backend/assets/js/jquery.js": "/backend/assets/js/jquery.js?id=a09e13ee94d51c524b7e",
-    "/backend/assets/js/login.js": "/backend/assets/js/login.js?id=d41d8cd98f00b204e980"
+    "/backend/assets/js/login.js": "/backend/assets/js/login.js?id=d41d8cd98f00b204e980",
+    "/backend/assets/js/libs.js": "/backend/assets/js/libs.js?id=16c0b1fffca5dd9993cb",
+    "/backend/assets/js/scripts.js": "/backend/assets/js/scripts.js?id=66aa7114f282c45b8fa4"
 }
