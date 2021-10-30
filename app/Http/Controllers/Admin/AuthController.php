@@ -44,4 +44,10 @@ class AuthController extends Controller
         return response()->json($json);
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('admin.login');
+    }
+
 }
