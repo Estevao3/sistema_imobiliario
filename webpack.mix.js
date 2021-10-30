@@ -28,7 +28,7 @@ mix
     ], 'public/backend/assets/js/jquery.js')
 
     .scripts([
-        'resources/views/admin/assets/js/login.min.js'
+        'resources/views/admin/assets/js/login.js'
     ], 'public/backend/assets/js/login.js')
 
     .scripts([
