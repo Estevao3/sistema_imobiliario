@@ -30,12 +30,12 @@
 
                 <label>
                     <span class="field icon-envelope">E-mail:</span>
-                    <input type="email" name="email" id="email" placeholder="Informe seu e-mail" value="teste@gmail" required/>
+                    <input type="email" name="email" id="email" placeholder="Informe seu e-mail" value="teste@gmail.com" required/>
                 </label>
 
                 <label>
                     <span class="field icon-unlock-alt">Senha:</span>
-                    <input type="password" name="password_check" id="password_check" value="123" placeholder="Informe sua senha" required/>
+                    <input type="password" name="password_check" id="password_check" value="teste" placeholder="Informe sua senha" />
                 </label>
 
                 <button class="gradient gradient-orange radius icon-sign-in">Entrar</button>
