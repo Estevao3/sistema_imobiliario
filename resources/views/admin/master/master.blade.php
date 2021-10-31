@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="{{ url(mix('backend/assets/css/style.css')) }}"/>
     <link rel="icon" type="image/png" href="backend/assets/images/favicon.png"/>
 
+    @hasSection('css')
+        @yield('css')
+    @endif
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>UpAdmin - Site Control</title>
@@ -91,6 +95,10 @@
 <script src="{{ url(mix('backend/assets/js/jquery.js')) }}"></script>
 <script src="{{ url(mix('backend/assets/js/libs.js')) }}"></script>
 <script src="{{ url(mix('backend/assets/js/scripts.js')) }}"></script>
+
+@hasSection('js')
+    @yield('js')
+@endif
 
 </body>
 </html>
