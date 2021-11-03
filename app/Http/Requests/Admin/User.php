@@ -27,10 +27,10 @@ class User extends FormRequest
         return [
             'name' => 'required|min:3|max:191',
             'genre' => 'in:male,female,other',
-            'document' => 'required|min:11|max:14|unique:users',
+           // 'document' => 'required|min:11|max:14|unique:users',
             'document_secondary' => 'required|min:8|max:12',
             'document_secondary_complement' =>  'required',
-            'date_of_birth' => 'required|date_format/d/m/y',
+            'date_of_birth' => 'required|date_format:d/m/Y',
             'place_of_birth' => 'required',
             'civil_status' =>   'required|in:married,separated,single,divorced,widower',
 
@@ -51,16 +51,16 @@ class User extends FormRequest
             'cell' => 'required',
 
             //Access
-            'email' => 'required|email|unique:users',
+            //'email' => 'required|email|unique:users',
 
             //spouse
             'type_of_communion' => 'required_if:civil_status,married,separated|in:Comunhão Universal de Bens,Comunhão Parcial de Bens,Separação Total de Bens,Participação Final de Aquestos',
             'spouse_name' => 'required_if:civil_status,married,separated|min:3|max:191',
             'genre' => 'required_if:civil_status,married,separated|in:male,female,other',
-            'spouse_spouse_document' => 'required_if:civil_status,married,separated|min:11|max:14|unique:users',
+            'spouse_document' => 'required_if:civil_status,married,separated|min:11|max:14',
             'spouse_document_secondary' => 'required_if:civil_status,married,separated|min:8|max:12',
             'spouse_document_secondary_complement' =>  'required_if:civil_status,married,separated',
-            'spouse_date_of_birth' => 'required_if:civil_status,married,separated|date_format/d/m/y',
+            'spouse_date_of_birth' => 'required_if:civil_status,married,separated|date_format:d/m/Y',
             'spouse_place_of_birth' => 'required_if:civil_status,married,separated',
             'spouse_occupation' => 'required_if:civil_status,married,separated',
             'spouse_income' => 'required_if:civil_status,married,separated',

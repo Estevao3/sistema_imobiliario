@@ -78,7 +78,7 @@
                             <label class="label">
                                 <span class="legend">*CPF:</span>
                                 <input type="tel" class="mask-doc" name="document" placeholder="CPF do Cliente"
-                                       value=""/>
+                                       value="{{ old('document') }}"/>
                             </label>
                         </div>
 
@@ -86,13 +86,13 @@
                             <label class="label">
                                 <span class="legend">*RG:</span>
                                 <input type="text" name="document_secondary" placeholder="RG do Cliente"
-                                       value=""/>
+                                       value="{{ old('document_secondary') }}"/>
                             </label>
 
                             <label class="label">
                                 <span class="legend">Órgão Expedidor:</span>
                                 <input type="text" name="document_secondary_complement" placeholder="Expedição"
-                                       value=""/>
+                                       value="{{ old('document_secondary_complement') }}"/>
                             </label>
                         </div>
 
@@ -100,13 +100,13 @@
                             <label class="label">
                                 <span class="legend">*Data de Nascimento:</span>
                                 <input type="tel" name="date_of_birth" class="mask-date"
-                                       placeholder="Data de Nascimento" value=""/>
+                                       placeholder="Data de Nascimento"  value="{{ old('date_of_birth') }}"/>
                             </label>
 
                             <label class="label">
                                 <span class="legend">*Naturalidade:</span>
                                 <input type="text" name="place_of_birth" placeholder="Cidade de Nascimento"
-                                       value=""/>
+                                       value="{{ old('place_of_birth') }}"/>
                             </label>
                         </div>
 
@@ -143,20 +143,20 @@
                                     <label class="label">
                                         <span class="legend">*Profissão:</span>
                                         <input type="text" name="occupation" placeholder="Profissão do Cliente"
-                                               value=""/>
+                                               value="{{ old('occupation') }}"/>
                                     </label>
 
                                     <label class="label">
                                         <span class="legend">*Renda:</span>
                                         <input type="tel" name="income" class="mask-money"
-                                               placeholder="Valores em Reais" value=""/>
+                                               placeholder="Valores em Reais" value="{{ old('income') }}"/>
                                     </label>
                                 </div>
 
                                 <label class="label">
                                     <span class="legend">*Empresa:</span>
                                     <input type="text" name="company_work" placeholder="Contratante"
-                                           value=""/>
+                                           value="{{ old('company_work') }}"/>
                                 </label>
                             </div>
                         </div>
@@ -172,34 +172,34 @@
                                     <label class="label">
                                         <span class="legend">*CEP:</span>
                                         <input type="tel" name="zipcode" class="mask-zipcode zip_code_search"
-                                               placeholder="Digite o CEP" value=""/>
+                                               placeholder="Digite o CEP" value="{{ old('zipcode') }}"/>
                                     </label>
                                 </div>
 
                                 <label class="label">
                                     <span class="legend">*Endereço:</span>
                                     <input type="text" name="street" class="street"
-                                           placeholder="Endereço Completo" value=""/>
+                                           placeholder="Endereço Completo" value="{{ old('street') }}"/>
                                 </label>
 
                                 <div class="label_g2">
                                     <label class="label">
                                         <span class="legend">*Número:</span>
                                         <input type="text" name="number" placeholder="Número do Endereço"
-                                               value=""/>
+                                               value="{{ old('number') }}"/>
                                     </label>
 
                                     <label class="label">
                                         <span class="legend">Complemento:</span>
                                         <input type="text" name="complement" placeholder="Completo (Opcional)"
-                                               value=""/>
+                                               value="{{ old('complement') }}"/>
                                     </label>
                                 </div>
 
                                 <label class="label">
                                     <span class="legend">*Bairro:</span>
                                     <input type="text" name="neighborhood" class="neighborhood"
-                                           placeholder="Bairro" value=""/>
+                                           placeholder="Bairro" value="{{ old('neighborhood') }}"/>
                                 </label>
 
                                 <div class="label_g2">
