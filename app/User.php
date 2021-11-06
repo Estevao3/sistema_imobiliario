@@ -89,9 +89,19 @@ class User extends Authenticatable
         $this->attributes['document'] = $this->clearField($value);
     }
 
+    public function getDocumentAttribute($value)
+    {
+        return substr($value, 0, 3) . '.' . substr($value, 3, 3) . '.' . substr($value, 6, 3) . '-' . substr($value, 9, 2);
+    }
+
     public function setDateOfBirthAttribute($value)
     {
         $this->attributes['date_of_birth'] = $this->convertStringtoDate($value);
+    }
+
+    public function getDateOfBirthAttribute($value)
+    {
+        return date('d/m/Y', strtotime($value));
     }
 
     public function setZipcodeAttribute($value)
@@ -114,9 +124,19 @@ class User extends Authenticatable
         $this->attributes['income'] = floatval($this->convertStringtoDouble($value));
     }
 
+    public function getIncomeAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
+    }
+
     public function setSpouseDocumentAttribute($value)
     {
         $this->attributes['spouse_document'] = $this->clearField($value);
+    }
+
+    public function getSpouseDocumentAttribute($value)
+    {
+        return substr($value, 0, 3) . '.' . substr($value, 3, 3) . '.' . substr($value, 6, 3) . '-' . substr($value, 9, 2);
     }
 
     public function setSpouseDateOfBirthAttribute($value)
@@ -124,9 +144,20 @@ class User extends Authenticatable
         $this->attributes['spouse_date_of_birth'] = $this->convertStringtoDate($value);
     }
 
+    public function getSpouseDateOfBirthAttribute($value)
+    {
+        return date('d/m/Y', strtotime($value));
+    }
+
     public function setSpouseIncomeAttribute($value)
     {
         $this->attributes['spouse_income'] = floatval($this->convertStringtoDouble($value));
+    }
+
+    public function getSpouseIncomeAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
+
     }
 
     public function setAdminAttribute($value)

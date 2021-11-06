@@ -74,6 +74,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::where('id', $id)->first();
+        //var_dump($user->document, $user->date_of_birth, $user->getAttributes());
         return view('admin.users.edit', [
             'user' => $user
         ]);
@@ -86,9 +87,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+
+        $user->setLessorAttribute($request->lessor);
+        $user->setLessorAttribute($request->lessee);
+
+        $user->fill($request->all());
+        $user->save();
+        var_dump($user);
     }
 
     /**
