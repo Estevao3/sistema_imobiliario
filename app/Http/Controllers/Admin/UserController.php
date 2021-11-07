@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User as UserRequest;
 use App\User;
+use Illuminate\Support\Facades\Storage;
+use App\Support\Cropper;
 
 class UserController extends Controller
 {
@@ -29,7 +31,10 @@ class UserController extends Controller
      */
     public function team()
     {
-        return view('admin.users.team');
+        $users = User::where('admin', 1)->get();
+        return view('admin.users.team', [
+            'users' => $users
+        ]);
     }
 
     /**
@@ -51,7 +56,15 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $userCreate = User::create($request->all());
-        var_dump($userCreate);
+
+        if(!empty($request->file('cover'))){
+            //$userCreate->cover = $request->file('cover')->store('user');
+            $userCreate->cover = $request->file('cover')->storeAs('user', str_slug($request->name) . '-' . str_replace('.', '', microtime(true)) . '.' . $request->file('cover')->extension());
+            $userCreate->save();
+        }
+        return redirect()->route('admin.users.edit', [
+            '$userCreate' => $user->id
+        ])->with(['color' => 'green', 'message' => 'cliente cadastrado com sucesso!']);
     }
 
     /**
@@ -94,10 +107,27 @@ class UserController extends Controller
         $user->setLessorAttribute($request->lessor);
         $user->setLessorAttribute($request->lessee);
 
+        if(!empty($request->file('cover'))){
+            Storage::delete($user->cover);
+            Cropper::flush($user->cover);
+            $user->cover = '';
+        }
         $user->fill($request->all());
-        $user->save();
-        var_dump($user);
+
+        if(!empty($request->file('cover'))){
+            //$user->cover = $request->file('cover')->store('user');
+            $user->cover = $request->file('cover')->storeAs('user', str_slug($request->name) . '-' . str_replace('.', '', microtime(true)) . '.' . $request->file('cover')->extension());
+        }
+
+        if(!$user->save()){
+            return redirect()->back()->withInput()->withErrors();
+        }
+
+        return redirect()->route('admin.users.edit', [
+            'users' => $user->id
+        ])->with(['color' => 'green', 'message' => 'cliente atualizado com sucesso!']);
     }
+
 
     /**
      * Remove the specified resource from storage.

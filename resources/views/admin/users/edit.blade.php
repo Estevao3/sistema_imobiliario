@@ -25,9 +25,15 @@
             @if($errors->all())
                 @foreach($errors->all() as $erro)
                     @message(['color' => 'orange'])
-                    <p class="icon-asterisk">{{ $erro }}</p>
+                        <p class="icon-asterisk">{{ $erro }}</p>
                     @endmessage
                 @endforeach
+            @endif
+
+            @if(session()->exists('message'))
+                @message(['color' => session()->get('color')])
+                <p class="icon-asterisk">{{ session()->get('message') }}</p>
+                @endmessage
             @endif
 
             <ul class="nav_tabs">
