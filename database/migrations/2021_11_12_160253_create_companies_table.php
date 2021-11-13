@@ -19,7 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('social_name');
             $table->string('alias_name');
             $table->string('document_company');
-            $table->string('document_company_secundary');
+            $table->string('document_company_secondary');
 
             // address
             $table->string('zipcode')->nullable();

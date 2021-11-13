@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
 use App\Support\Cropper;
+use App\Company;
 
 class User extends Authenticatable
 {
@@ -75,6 +76,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function companies()
+    {
+        return $this->hasMany(Company::class, 'user', 'id');
+    }
 
     public function getUrlCoverAttribute()
     {
