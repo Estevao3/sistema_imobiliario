@@ -18,6 +18,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.'], fu
 
         /** Empresas */
         Route::resource('companies', 'CompanyController');
+
+        /** Imóveis */
+        Route::resource('properties', 'PropertyController');
     });
 
     /** Logout */
