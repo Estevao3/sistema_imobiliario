@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Property;
+use \App\Http\Requests\Admin\Property as PropertyRequest;
 
 class PropertyController extends Controller
 {
@@ -34,7 +35,7 @@ class PropertyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PropertyRequest $request)
     {
         $property = new Property();
         $property->fill($request->all());
@@ -71,7 +72,7 @@ class PropertyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PropertyRequest $request, $id)
     {
         //
     }
