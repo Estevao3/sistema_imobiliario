@@ -100,8 +100,9 @@
                         <label class="label">
                             <span class="legend">Proprietário:</span>
                             <select name="user" class="select2">
-                                <option value="1">Guh</option>
-                                <option value="">Nome (documento)</option>
+                                <option value="">Selecione o propritário</option>
+                                @foreach($users as $user)
+a                                @endforeach
                             </select>
                         </label>
 
@@ -349,7 +350,7 @@
                 </div>
 
                 <div class="text-right mt-2">
-                    <button class="btn btn-large btn-green icon-check-square-o">Editar Imóvel</button>
+                    <button class="btn btn-large btn-green icon-check-square-o">Atualizar Imóvel</button>
                 </div>
             </form>
         </div>
