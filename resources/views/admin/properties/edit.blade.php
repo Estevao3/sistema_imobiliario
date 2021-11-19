@@ -102,6 +102,7 @@
                             <select name="user" class="select2">
                                 <option value="">Selecione o propritário</option>
                                 @foreach($users as $user)
+                                    <option value="{{ $user->id }}"> {{ $user->name }} ({{ $user->document }})</option>
 a                                @endforeach
                             </select>
                         </label>

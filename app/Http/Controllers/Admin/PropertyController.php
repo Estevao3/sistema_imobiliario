@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Property;
 use \App\Http\Requests\Admin\Property as PropertyRequest;
 use App\User;
+use App\PropertyImage;
 
 class PropertyController extends Controller
 {
@@ -45,6 +46,16 @@ class PropertyController extends Controller
     public function store(PropertyRequest $request)
     {
         $createProperty = Property::create($request->all());
+
+        if($request->allFiles()) {
+            foreach ($request->allFiles()['files'] as $image) {
+                $propertyImage = new PropertyImage();
+                $propertyImage->property = $createProperty->id;
+                $propertyImage->path = $image->storeAs('properties/' . $createProperty->id, str_slug($request->title) . '-' . str_replace('.', '', microtime(true)) . '.' . $image->extension());
+                $propertyImage->save();
+                unset($propertyImage);
+            }
+        }
 
         return redirect()->route('admin.properties.edit', [
             'property' => $createProperty->id
@@ -110,6 +121,15 @@ class PropertyController extends Controller
 
         $property->save();
 
+        if($request->allFiles()) {
+            foreach ($request->allFiles()['files'] as $image) {
+                $propertyImage = new PropertyImage();
+                $propertyImage->property = $property->id;
+                $propertyImage->path = $image->storeAs('properties/' . $property->id, str_slug($request->title) . '-' . str_replace('.', '', microtime(true)) . '.' . $image->extension());
+                $propertyImage->save();
+                unset($propertyImage);
+            }
+        }
         return redirect()->route('admin.properties.edit', [
             'property' => $property->id
         ])->with(['color' => 'green', 'message' => 'Imóvel alterado com sucesso!']);
