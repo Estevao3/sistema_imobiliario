@@ -37,11 +37,11 @@ class PropertyController extends Controller
      */
     public function store(PropertyRequest $request)
     {
-        $property = new Property();
-        $property->fill($request->all());
+        $createProperty = Property::create($request->all());
 
-        var_dump($property->getAttributes());
-    }
+        return redirect()->route('admin.properties.edit', [
+            'property' => $createProperty->id
+        ])->with(['color' => 'green', 'message' => 'Imóvel cadastrado com sucesso!']);    }
 
     /**
      * Display the specified resource.
@@ -62,7 +62,11 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $property = Property::where('id', $id)->first();
+
+        return view('admin.properties.edit', [
+            'property' => $property
+        ]);
     }
 
     /**
@@ -74,7 +78,32 @@ class PropertyController extends Controller
      */
     public function update(PropertyRequest $request, $id)
     {
-        //
+        $property = Property::where('id', $id)->first();
+
+        $property->setSaleAttribute($request->sale);
+        $property->setRentAttribute($request->rent);
+        $property->setAirConditioningAttribute($request->air_conditioning);
+        $property->setBarAttribute($request->bar);
+        $property->setLibraryAttribute($request->library);
+        $property->setBarbecueGrillAttribute($request->barbecue_grill);
+        $property->setAmericanKitchenAttribute($request->american_kitchen);
+        $property->setFittedKitchenAttribute($request->fitted_kitchen);
+        $property->setPantryAttribute($request->pantry);
+        $property->setEdiculeAttribute($request->edicule);
+        $property->setOfficeAttribute($request->office);
+        $property->setBathtubAttribute($request->bathtub);
+        $property->setFirePlaceAttribute($request->fireplace);
+        $property->setLavatoryAttribute($request->lavatory);
+        $property->setFurnishedAttribute($request->furnished);
+        $property->setPoolAttribute($request->pool);
+        $property->setSteamRoomAttribute($request->steam_room);
+        $property->setViewOfTheSeaAttribute($request->view_of_the_sea);
+
+        $property->save();
+
+        return redirect()->route('admin.properties.edit', [
+            'property' => $property->id
+        ])->with(['color' => 'green', 'message' => 'Imóvel alterado com sucesso!']);
     }
 
     /**
