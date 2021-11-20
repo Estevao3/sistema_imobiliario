@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\PropertyImage;
 
 class Property extends Model
 {
@@ -53,6 +54,12 @@ class Property extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user', 'id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(PropertyImage::class, 'property', 'id')
+            ->orderBy('cover', 'ASC');
     }
 
     public function setSaleAttribute($value)

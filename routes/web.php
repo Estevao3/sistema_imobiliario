@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'as' => 'admin.'], fu
         Route::resource('companies', 'CompanyController');
 
         /** Imóveis */
+        Route::post('properties/image-set-cover', 'PropertyController@imageSetcover')->name('properties.imageSetcover');
+        Route::delete('properties/image-remove', 'PropertyController@imageRemove')->name('properties.imageRemove');
         Route::resource('properties', 'PropertyController');
     });
 

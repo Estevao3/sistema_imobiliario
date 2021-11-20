@@ -4,7 +4,7 @@ $(function(){
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    })
+    });
 
     $('form[name="login"]').submit(function (event) {
         event.preventDefault();
