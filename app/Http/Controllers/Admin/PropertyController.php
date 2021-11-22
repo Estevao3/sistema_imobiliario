@@ -8,6 +8,8 @@ use App\Property;
 use \App\Http\Requests\Admin\Property as PropertyRequest;
 use App\User;
 use App\PropertyImage;
+use Illuminate\Support\Facades\Storage;
+use App\Support\Cropper;
 
 class PropertyController extends Controller
 {
@@ -146,13 +148,37 @@ class PropertyController extends Controller
         //
     }
 
-    public function imageSetcover()
+    public function imageSetcover(Request $request)
     {
-        return response()->json('chegou ao set ');
+        $imageSetCover = PropertyImage::where('id', $request->image)->first();
+        $allImage = PropertyImage::where('property', $imageSetCover->property)->get();
+
+        foreach ($allImage as $image) {
+            $image->cover = null;
+            $image->save();
+        }
+
+        $imageSetCover->cover = true;
+        $imageSetCover->save();
+
+        $json = [
+            'success' => true
+        ];
+
+        return response()->json($json);
     }
 
-    public function imageRemove()
+    public function imageRemove(Request $request)
     {
-        return response()->json('chegou ao remove ');
+        $imageDelete = PropertyImage::where('id', $request->image)->first();
+
+        Storage::delete($imageDelete->path);
+        Cropper::flush($imageDelete->path);
+        $imageDelete->delete();
+
+        $json = [
+            'success' => true
+        ];
+        return response()->json($json);
     }
 }
